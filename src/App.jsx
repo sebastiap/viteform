@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 
 // My components
-
+import ApiProp from './components/API'
 import HookForm from './components/HookForm/HookForm'
 import About from './components/About'
 
@@ -11,6 +11,7 @@ function App() {
 
   return (
     <div className="App">
+    <ApiProp/>
     <About />
       <h1>Vite + React</h1>
       <h2>Login</h2>

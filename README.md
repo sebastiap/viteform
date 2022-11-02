@@ -9,9 +9,9 @@ The main purpose of this project is to try and understand a set of tools and lib
 * Vite - For creating the project ✔️
 * React Hook Form - For creating a custom Form ✔️
 * Styled Component Library - For creating styles in a different way ✔️
+* Axios - to practice with API calls ✔️ (An excellent guide in https://www.robinwieruch.de/react-hooks-fetch-data/)
 
 * ChakraUI - Trying a new CSS component library 
-* Axios - to practice with API calls
 * Jest - for a popular test framework
 * Vitest - for a native test framework
 
