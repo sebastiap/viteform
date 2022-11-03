@@ -8,29 +8,27 @@ const ApiProp = () => {
     const [url, setUrl] = useState(
       'https://hn.algolia.com/api/v1/search?query=redux',
     );
-  
+
+    const [isLoading,setLoading] = useState(false)
+    const [isError, setIsError] = useState(false);
+
     useEffect(() => {
       const fetchData = async () => {
-        const result = await axios(url);
-  
-        setData(result.data);
+        setIsError(false);
+        setLoading(true);
+        try
+        {        
+          const result = await axios(url);
+          setData(result.data);
+        }
+        catch (error) {
+          setIsError(true);
+        }
+        setLoading(false);
       };
   
       fetchData();
     }, [url]);
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //       const result = await axios(
-    //         'https://hn.algolia.com/api/v1/search?query=redux',
-    //       );
-    
-    //       setData(result.data);
-    //     };
-    
-    //     fetchData();
-    //   }, []);
-
     
     return (
         <>
@@ -47,6 +45,12 @@ const ApiProp = () => {
       >
         Search
       </button>
+
+      {isError && <div>Something went wrong ...</div>}
+
+      {isLoading ? (
+        <div>Loading ...</div>
+      ) : (
         <ul>
         {data.hits.map( item => (
             <li key={item.objectId}>
@@ -54,6 +58,7 @@ const ApiProp = () => {
             </li>
             ))}
         </ul>
+      )}
         </>
     );
     
