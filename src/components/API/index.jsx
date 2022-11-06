@@ -1,63 +1,73 @@
-import React, {   useState, useEffect } from 'react';
-import axios from 'axios';
+import React, {   useState } from 'react';
+import {useDataApi} from '../common/useDataApi'
 
-const dataFetchReducer = (state, action) => {
-  switch (action.type) {
-    case 'FETCH_INIT':
-      return {
-        ...state,
-        isLoading: true,
-        isError: false
-      };
-    case 'FETCH_SUCCESS':
-      return {
-        ...state,
-        isLoading: false,
-        isError: false,
-        data: action.payload,
-      };
-    case 'FETCH_FAILURE':
-      return {
-        ...state,
-        isLoading: false,
-        isError: true,
-      };
-    default:
-      throw new Error();
-  }
-};
+import { Spinner } from '@chakra-ui/react'
+import { Sform,Sbutton,Sinput } from '../common/Sform.styled';
 
-const useDataApi = (initialUrl, initialData) => {
-  const [state, dispatch] = useReducer(dataFetchReducer, {
-    isLoading: false,
-    isError: false,
-    data: initialData,
-  });
 
-  // const [data, setData] = useState(initialData);
-  const [url, setUrl] = useState(initialUrl);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [isError, setIsError] = useState(false);
+// const dataFetchReducer = (state, action) => {
+//   switch (action.type) {
+//     case 'FETCH_INIT':
+//       return {
+//         ...state,
+//         isLoading: true,
+//         isError: false
+//       };
+//     case 'FETCH_SUCCESS':
+//       return {
+//         ...state,
+//         isLoading: false,
+//         isError: false,
+//         data: action.payload,
+//       };
+//     case 'FETCH_FAILURE':
+//       return {
+//         ...state,
+//         isLoading: false,
+//         isError: true,
+//       };
+//     default:
+//       throw new Error();
+//   }
+// };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      dispatch({ type: 'FETCH_INIT' });
+// export const useDataApi = (initialUrl, initialData) => {
+//   const [url, setUrl] = useState(initialUrl);
 
-      try {
-        dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
-      } catch (error) {
-        dispatch({ type: 'FETCH_FAILURE' });
-      }
+//   const [state, dispatch] = useReducer(dataFetchReducer, {
+//     isLoading: false,
+//     isError: false,
+//     data: initialData,
+//   });
 
-      setIsLoading(false);
-    };
+//   useEffect(() => {
+//     let didCancel = false;
 
-    fetchData();
-  }, [url]);
+//     const fetchData = async () => {
+//       dispatch({ type: 'FETCH_INIT' });
 
-  return [state, setUrl];
-};
+//       try {
+//         const result = await axios(url);
 
+//         if (!didCancel) {
+//           dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
+//         }
+//       } catch (error) {
+//         if (!didCancel) {
+//           dispatch({ type: 'FETCH_FAILURE' });
+//         }
+//       }
+//     };
+
+//     fetchData();
+
+//     return () => {
+//       didCancel = true;
+//     };
+//   }, [url]);
+
+//   return [state, setUrl];
+// }
 
 const ApiProp = () => {
     const [query, setQuery] = useState('redux');
@@ -68,7 +78,7 @@ const ApiProp = () => {
 
     return (
         <>
-      <form
+      <Sform
         onSubmit={event => {
           doFetch(
             `http://hn.algolia.com/api/v1/search?query=${query}`,
@@ -77,24 +87,30 @@ const ApiProp = () => {
           event.preventDefault();
         }}
       >
-        <input
+        <Sinput
           type="text"
           value={query}
           onChange={event => setQuery(event.target.value)}
         />
-        <button type="submit">Search</button>
-      </form>
+        <Sbutton type="submit">Search</Sbutton>
+      </Sform>
 
       {isError && <div>Something went wrong ...</div>}
 
       {isLoading ? (
-        <div>Loading ...</div>
+        <Spinner
+        thickness='4px'
+        speed='0.65s'
+        emptyColor='gray.100'
+        color='red.800'
+        size='xl'
+      />
       ) : (
         <ul>
           {data.hits.map(item => (
-            <li key={item.objectID}>
+            <div key={item.objectID}>
               <a href={item.url}>{item.title}</a>
-            </li>
+            </div>
           ))}
         </ul>
       )}

@@ -5,6 +5,14 @@
   text-align: center;
 }
 
+.logodiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20;
+  margin:20px
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

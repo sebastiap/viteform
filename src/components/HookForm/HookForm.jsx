@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-import { Sform,Sbutton,Sinput } from './Sform.styled';
+import { Sform,Sbutton,Sinput } from '../common/Sform.styled';
 
 export default function HookForm() {
     // a brief explanation of useForm of react-hook-form
