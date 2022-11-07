@@ -16,6 +16,10 @@ const colors = {
 
 const theme = extendTheme({ colors })
 
+test('adds 1 + 2 to equal 3', () => {
+  expect(1+2).toBe(3);
+});
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ChakraProvider theme={theme} >

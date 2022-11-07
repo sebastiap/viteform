@@ -1,9 +1,14 @@
 import React, {   useState } from 'react';
 import {useDataApi} from '../common/useDataApi'
 
-import { Spinner } from '@chakra-ui/react'
-import { Sform,Sbutton,Sinput } from '../common/Sform.styled';
+import {   List,ListItem,  ListIcon, Spinner } from '@chakra-ui/react'
+import { ExternalLinkIcon } from '@chakra-ui/icons'
 
+
+import { Sform,Sbutton,Sinput } from '../common/Sform.styled';
+test('adds 1 + 2 to equal 3', () => {
+  expect(1+2).toBe(3);
+});
 
 // const dataFetchReducer = (state, action) => {
 //   switch (action.type) {
@@ -106,13 +111,14 @@ const ApiProp = () => {
         size='xl'
       />
       ) : (
-        <ul>
+        <List spacing={3}>
           {data.hits.map(item => (
-            <div key={item.objectID}>
+            <ListItem key={item.objectID}>
+            <ListIcon as={ExternalLinkIcon} color='green.500' />
               <a href={item.url}>{item.title}</a>
-            </div>
+            </ListItem>
           ))}
-        </ul>
+        </List>
       )}
         </>
     );
