@@ -6,9 +6,7 @@ import { ExternalLinkIcon } from '@chakra-ui/icons'
 
 
 import { Sform,Sbutton,Sinput } from '../common/Sform.styled';
-test('adds 1 + 2 to equal 3', () => {
-  expect(1+2).toBe(3);
-});
+
 
 // const dataFetchReducer = (state, action) => {
 //   switch (action.type) {
