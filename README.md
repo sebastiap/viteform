@@ -12,8 +12,4 @@ The main purpose of this project is to try and understand a set of tools and lib
 * Axios - to practice with API calls ✔️ 
 * ChakraUI - Trying a new CSS component library ✔️
 * Jest - for a popular test framework ✔️
-
-* Vitest - for a native test framework
-
-* Portals ? (https://reactjs.org/docs/portals.html)
 * HOC(https://www.robinwieruch.de/react-higher-order-components/)
