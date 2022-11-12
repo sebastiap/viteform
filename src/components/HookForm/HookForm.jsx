@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import {Heading } from '@chakra-ui/react'
 
-import { Sform,Sbutton,Sinput } from '../common/Sform.styled';
+import { Sform,Sinput } from '../common/Sform.styled';
 
 export default function HookForm() {
     // a brief explanation of useForm of react-hook-form
@@ -16,6 +17,7 @@ export default function HookForm() {
     return (
       /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
       <Sform onSubmit={handleSubmit(onSubmit)}>
+        <Heading mb={6}  mr={15} ml={15}> Login with React Hook Form</Heading>
         {/* register your input into the hook by invoking the "register" function */}
         <Sinput defaultValue="User" {...register("username", { required: "Username is required."})} />
         

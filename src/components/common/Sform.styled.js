@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 export const Sform = styled.form`
-  max-width: 400px;
+  /* max-width: 600px; */
   margin: 0 auto;
 `
 export const Sinput = styled.input`
