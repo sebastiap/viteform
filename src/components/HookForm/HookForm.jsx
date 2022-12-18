@@ -16,14 +16,14 @@ export default function HookForm() {
   
     return (
       /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-      <Sform onSubmit={handleSubmit(onSubmit)}>
+      <Sform onSubmit={handleSubmit(onSubmit)} style={{marginBottom:"50vh", marginTop:"0vh"}}>
         <Heading mb={6}  mr={15} ml={15}> Login with React Hook Form</Heading>
         {/* register your input into the hook by invoking the "register" function */}
         <Sinput defaultValue="User" {...register("username", { required: "Username is required."})} />
         
         {/* include validation with required or other standard HTML validation rules */}
         <Sinput {...register("exampleRequired", { required: "Password is required." ,
-        minLength:{value:8,message:"password must be at least 8 characters long."}})} />
+        minLength:{value:8,message:"Password must be at least 8 characters long."}})} />
 
         {/* errors will return when field validation fails  */}
         {errors.username && <span>{errors.username.message}</span>}
